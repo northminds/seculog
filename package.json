@@ -1,0 +1,26 @@
+{
+  "name": "seculog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NM",
+  "keywords": [
+    "pino",
+    "logger",
+    "loki",
+    "secure"
+  ],
+  "license": "MIT",
+  "description": "Custom Pino logger with Loki + secure transport",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "pino": "^9.9.5",
+    "pino-abstract-transport": "^2.0.0",
+    "pino-loki": "^2.6.0",
+    "pino-pretty": "^13.1.1",
+    "uuid": "^13.0.0"
+  }
+}
