@@ -1,8 +1,8 @@
 export interface Logger {
     error(message: string, obj?: Record<string, any>): void;
     secureError(message: string, payload: any): string;
-    info(...args: any[]): void;
-    warn(...args: any[]): void;
+    info(message: string, obj?: Record<string, any>): void;
+    warn(message: string, obj?: Record<string, any>): void;
 }
 
 export interface LoggerOptions {

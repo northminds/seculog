@@ -89,11 +89,19 @@ function createLogger({ env = process.env.NODE_ENV || 'development', appName = '
   return {
     error,
     secureError,
-    info: (...args) => {
-      try { return lokiLogger && lokiLogger.info(...args); } catch (_) { try { return baseLogger.info(...args); } catch (_) {} }
+    info: (message, obj = {}) => {
+      try {
+        return lokiLogger && lokiLogger.info({ source: appName, ...obj }, message);
+      } catch (_) {
+        try { return baseLogger.info({ source: appName, fallback: true, ...obj }, message); } catch (_) {}
+      }
     },
-    warn: (...args) => {
-      try { return lokiLogger && lokiLogger.warn(...args); } catch (_) { try { return baseLogger.warn(...args); } catch (_) {} }
+    warn: (message, obj = {}) => {
+      try {
+        return lokiLogger && lokiLogger.warn({ source: appName, ...obj }, message);
+      } catch (_) {
+        try { return baseLogger.warn({ source: appName, fallback: true, ...obj }, message); } catch (_) {}
+      }
     },
   };
 }
