@@ -1,5 +1,6 @@
 const pino = require('pino');
 const { v4: uuidv4 } = require('uuid');
+const { redactName, redactPhone } = require('./utils/redact');
 
 function createLogger({ env = process.env.NODE_ENV || 'development', appName = 'default-service', lokiUrl, secureUrl } = {}) {
   let baseLogger;
@@ -106,4 +107,9 @@ function createLogger({ env = process.env.NODE_ENV || 'development', appName = '
   };
 }
 
-module.exports = { createLogger };
+const redact = {
+  name: redactName,
+  phone: redactPhone,
+}
+
+module.exports = { createLogger, redact };

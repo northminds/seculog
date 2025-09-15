@@ -13,3 +13,14 @@ export interface LoggerOptions {
 }
 
 export declare function createLogger(options?: LoggerOptions): Logger;
+
+// Redaction utilities
+export type RedactName = (name: string, fraction?: number) => string;
+export type RedactPhone = (input: string | number | null | undefined) => string;
+
+export interface Redact {
+    name: RedactName;
+    phone: RedactPhone;
+}
+
+export declare const redact: Redact;
